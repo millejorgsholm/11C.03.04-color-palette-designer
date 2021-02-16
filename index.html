@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Color picker</title>
-</head>
-<body>
-    <h1>Color picker</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Selector</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div>
+        <p>Please select a color:</p>
+        <input type="color" id="colorSelector" />
+      </div>
 
-    <div class="box">
-    <input class="colorpicker" type="color" > </input> <br>
+      <div>
+        <div class="colorBox"></div>
+        <p class="hex">HEX: #000000</p>
+        <p class="rgb">RGB: 0, 0, 0</p>
+        <p class="hsl">HSL: 0 0% 0%</p>
+      </div>
+    </main>
 
-    <p>HEX:</p><p class="HEXoutput"></p><br>
-    <p>RGB:</p><p class="RGBoutput"></p><br>
-    <p>HSL</p><p class="HSLoutput"></p><br>
-  
-</div>
-
-<script src="script.js"></script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
