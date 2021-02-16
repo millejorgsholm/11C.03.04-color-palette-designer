@@ -1,63 +1,70 @@
 "use strict";
 
-window.addEventListener("DOMContentLoaded", getValue);
+window.addEventListener("DOMContentLoaded", start);
 
-function getValue() {
-  console.log("getValue");
+function start() {
+  //get input
+  console.log("start");
 
-  colorSelector.addEventListener("input", colorTheBox);
+  readInput();
 }
 
-function colorTheBox(event) {
-  document.querySelector(".colorBox").style.backgroundColor =
-    event.target.value;
+// HVORDAN FÅR JEG DEN TIL AT FANGE INSTANT??? Everytime the user changes the color, the webpage must update the display
+function readInput() {
+  // reading the input and getting the HEX
+  console.log("reading input");
+  let input = document.querySelector(".colorpicker"); //getting the input
+  input.addEventListener("input", readInput); // when user puts in input the calculating starts
+  let colorValue = input.value; // variable colorValue is the value of the input
 
-  let hexValue = event.target.value;
-  console.log(hexValue);
+  document.querySelector(".HEXoutput").textContent = colorValue; //places the colorvalue in the DOM
+  console.log(`the HEX is ${colorValue}`);
 
-  showHEX(hexValue);
-  hexToRGB(hexValue);
+  calRGB(colorValue); //sending the parameter to function
 }
 
-function showHEX(hexValue) {
-  Number.parseInt(hexValue);
-  document.querySelector(".hex").textContent = `HEX: ${hexValue}`;
+function calRGB(colorValue) {
+  console.log("calculation RGB");
+
+  //dividing the hex into 3 part for the rgb - shipping the #
+  const r = colorValue.substring(1, 3);
+  const g = colorValue.substring(3, 5);
+  const b = colorValue.substring(5, 7);
+
+  //make into the numbers for rgb
+  const r2 = Number.parseInt(r, 16);
+  const g2 = Number.parseInt(g, 16);
+  const b2 = Number.parseInt(b, 16);
+  const rgbresult = `(${r2},${g2},${b2})`;
+
+  //placing the result in the DOM
+  document.querySelector(".RGBoutput").textContent = rgbresult;
+  console.log(`rgb koden er (${r2},${b2},${g2})`);
+
+  calHSL(r2, g2, b2);
 }
 
-function hexToRGB(hexValue) {
-  const r = Number.parseInt(hexValue.substring(1, 3), 16);
-  const g = Number.parseInt(hexValue.substring(3, 5), 16);
-  const b = Number.parseInt(hexValue.substring(5, 7), 16);
+function calHSL(r2, g2, b2) {
+  //converting rgb to hsl
+  console.log("calculation HSL");
 
-  console.log(r);
-  console.log(g);
-  console.log(b);
-  showRGB(r, g, b);
-}
-
-function showRGB(r, g, b) {
-  document.querySelector(".rgb").textContent = `RGB: ${r}, ${g}, ${b}`;
-  rgbToHSL(r, g, b);
-}
-
-function rgbToHSL(r, g, b) {
-  r /= 255;
-  g /= 255;
-  b /= 255;
+  r2 /= 255;
+  g2 /= 255;
+  b2 /= 255;
 
   let h, s, l;
 
-  const min = Math.min(r, g, b);
-  const max = Math.max(r, g, b);
+  const min = Math.min(r2, g2, b2);
+  const max = Math.max(r2, g2, b2);
 
   if (max === min) {
     h = 0;
-  } else if (max === r) {
-    h = 60 * (0 + (g - b) / (max - min));
-  } else if (max === g) {
-    h = 60 * (2 + (b - r) / (max - min));
-  } else if (max === b) {
-    h = 60 * (4 + (r - g) / (max - min));
+  } else if (max === r2) {
+    h = 60 * (0 + (g2 - b2) / (max - min));
+  } else if (max === g2) {
+    h = 60 * (2 + (b2 - r2) / (max - min));
+  } else if (max === b2) {
+    h = 60 * (4 + (r2 - g2) / (max - min));
   }
 
   if (h < 0) {
@@ -75,13 +82,7 @@ function rgbToHSL(r, g, b) {
   s *= 100;
   l *= 100;
 
-  //   console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
-  // just for testing
-  showHSL(h, s, l);
-}
-
-function showHSL(h, s, l) {
-  document.querySelector(".hsl").textContent = `HSL: ${h.toFixed(
-    0
-  )}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
+  document.querySelector(".HSLoutput").textContent = `${h}, ${s}, ${l}`;
+  console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
+  //SPG: HVORDAN FORKORTER JEG KOMME TALLENE???
 }
