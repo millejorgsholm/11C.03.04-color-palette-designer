@@ -2,6 +2,7 @@
 
 window.addEventListener("DOMContentLoaded", getValue);
 
+//Getting a selected color from the user
 function getValue() {
   colorSelector.addEventListener("input", function (event) {
     let hexValue = colorTheBox(event);
@@ -16,50 +17,48 @@ function getValue() {
     showHSL(hsl);
   });
 }
-
+//Showing the selected color as a colored box in CSS
 function colorTheBox(event) {
   document.querySelector(".colorBox").style.backgroundColor =
     event.target.value;
 
   let hexValue = event.target.value;
-  //   console.log(hexValue);
   return hexValue;
 }
 
-// SHOW'ERS
+//Showing hex
 function showHEX(hexValue) {
   Number.parseInt(hexValue);
   document.querySelector(".hex").textContent = `HEX: ${hexValue}`;
 }
 
+//Showing rgb
 function showRGB(rgb) {
   document.querySelector(
     ".rgb"
   ).textContent = `RGB: ${rgb.r}, ${rgb.g}, ${rgb.b}`;
 }
 
+//Showing hsl
 function showHSL(hsl) {
   document.querySelector(".hsl").textContent = hsl;
 }
 
+//Showing css
 function showCSS(css) {
   document.querySelector(".cssBox").style.backgroundColor = css;
   console.log(css);
 }
-// CONVERTERS
+//Converting hex to rgb
 function hexToRGB(hexValue) {
   const rgb = { r: "", g: "", b: "" };
   rgb.r = Number.parseInt(hexValue.substring(1, 3), 16);
   rgb.g = Number.parseInt(hexValue.substring(3, 5), 16);
   rgb.b = Number.parseInt(hexValue.substring(5, 7), 16);
-
-  //   console.log(rgb.r);
-  //   console.log(rgb.g);
-  //   console.log(rgb.b);
-  //   let rgbResult = `RGB: ${rgb.r}, ${rgb.g}, ${rgb.b}`;
   return rgb;
 }
 
+//Converting rgb to css
 function rgbToCSS(rgb) {
   rgb.r.toString();
   rgb.g.toString();
@@ -69,7 +68,7 @@ function rgbToCSS(rgb) {
   //   console.log(cssResult);
   return cssResult;
 }
-
+//Converting rbg to hsl --> code was given by teachers
 function rgbToHSL(rgb) {
   rgb.r /= 255;
   rgb.g /= 255;
@@ -100,12 +99,12 @@ function rgbToHSL(rgb) {
   } else {
     s = (max - l) / Math.min(l, 1 - l);
   }
-  // multiply s and l by 100 to get the value in percent, rather than [0,1]
+  //Multiplying s and l by 100 to get the value in percent, rather than [0,1]
   s *= 100;
   l *= 100;
 
-  //   console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
-  // just for testing
+  //Console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
+  //Testing
   let HSLResult = `HSL: ${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
   return HSLResult;
 }

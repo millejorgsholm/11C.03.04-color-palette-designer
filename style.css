@@ -1,7 +1,8 @@
 * {
   font-family: sans-serif;
 }
-
+/* 
+Styling the colored css box with a height and width */
 #colorSelector {
   width: 120px;
   height: 100px;
@@ -14,6 +15,7 @@
   border-radius: 10px;
 } */
 
+/* Make the paragraphs horizontally */
 p {
   display: inline-block;
 }
