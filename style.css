@@ -2,17 +2,17 @@
   font-family: sans-serif;
 }
 
-.colorpicker {
+#colorSelector {
   width: 120px;
   height: 100px;
 }
 
-.box {
+/* .colorBox {
   background-color: rgb(240, 244, 254);
   width: 250px;
   padding: 20px 0px 20px 20px;
   border-radius: 10px;
-}
+} */
 
 p {
   display: inline-block;
