@@ -65,7 +65,7 @@ function rgbToCSS(rgb) {
   rgb.b.toString();
 
   let cssResult = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-  //   console.log(cssResult);
+  //console.log(cssResult);
   return cssResult;
 }
 //Converting rbg to hsl --> code was given by teachers

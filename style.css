@@ -3,17 +3,30 @@
 }
 /* 
 Styling the colored css box with a height and width */
-#colorSelector {
+/* #colorSelector {
   width: 120px;
   height: 100px;
+} */
+
+.colorBox {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  background-color: #000000;
+  margin: 20px 0;
 }
 
-/* .colorBox {
-  background-color: rgb(240, 244, 254);
-  width: 250px;
-  padding: 20px 0px 20px 20px;
-  border-radius: 10px;
-} */
+.cssBox {
+  width: 100px;
+  height: 20px;
+  background-color: #000000;
+}
+
+main {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+}
 
 /* Make the paragraphs horizontally */
 p {
