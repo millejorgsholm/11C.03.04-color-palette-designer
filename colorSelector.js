@@ -75,7 +75,6 @@ function rgbToHSL(r, g, b) {
   l *= 100;
 
   //   console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
-  // just for testing
   showHSL(h, s, l);
 }
 
