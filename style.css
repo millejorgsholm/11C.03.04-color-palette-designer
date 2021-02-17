@@ -3,7 +3,6 @@
 }
 
 .colorBox {
-  border: 1px solid black;
   width: 200px;
   height: 200px;
   background-color: #000000;
@@ -12,7 +11,7 @@
 
 .cssBox {
   width: 100px;
-  height: 20px;
+  height: 40px;
   background-color: #000000;
 }
 
