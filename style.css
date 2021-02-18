@@ -1,27 +1,11 @@
-* {
-  font-family: sans-serif;
+body {
+  background: #f5f5f5;
+  font-family: "Montserrat";
 }
 
-.colorBox {
-  width: 200px;
-  height: 200px;
-  background-color: #000000;
-  margin: 20px 0;
-}
-
-.cssBox {
-  width: 100px;
-  height: 40px;
-  background-color: #000000;
-}
-
-main {
-  width: 100vw;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-/* Make the paragraphs horizontally */
-p {
-  display: inline-block;
+#color_box {
+  width: 150px;
+  height: 150px;
+  margin: 15px 0;
+  border-radius: 5px;
 }

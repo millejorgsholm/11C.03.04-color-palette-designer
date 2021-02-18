@@ -4,28 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Color Selector</title>
-    <link rel="stylesheet" href="style.css" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Improved Color selector</title>
   </head>
   <body>
-    <main>
-      <div>
-        <p>Please select a color:</p>
-        <!-- Where the user selects the color -->
-        <input type="color" id="colorSelector" />
-      </div>
+    <h1>Improved Color Selector</h1>
 
-      <div>
-        <div class="colorBox"></div>
-        <p class="hex">HEX: #000000</p>
-        <p class="rgb">RGB: 0, 0, 0</p>
-        <p class="hsl">HSL: 0 0% 0%</p>
-        <!-- cssBox is just a box created in CSS that shows the color underneath the colorBox -->
-        <br />
-        <p>The CSS box:</p>
-        <div class="cssBox"></div>
-      </div>
-    </main>
+    <div class="color_selector">
+      <input type="color" id="choose_color" />
+      <label for="choose_color">Select a color</label>
+    </div>
+    <div id="color_box"></div>
+    <div class="color_selected">
+      <p id="hex_color">HEX:</p>
+      <p id="rgb_color">RGB:</p>
+      <p id="hsl_color">HSL:</p>
+    </div>
 
     <script src="improvedcolorSelector.js"></script>
   </body>

@@ -1,91 +1,96 @@
 "use strict";
 
-window.addEventListener("DOMContentLoaded", getValue);
+document.addEventListener("DOMContentLoaded", startColorSelector);
 
-//Getting a selected color from the user
-function getValue() {
-  colorSelector.addEventListener("input", function (event) {
-    let hexValue = colorTheBox(event);
-    console.log(hexValue);
-    showHEX(hexValue);
-    let rgb = hexToRGB(hexValue);
-    console.log(rgb);
-    showRGB(rgb);
-    let css = rgbToCSS(rgb);
-    showCSS(css);
-    let hsl = rgbToHSL(rgb);
-    showHSL(hsl);
-  });
-}
-//Showing the selected color as a colored box in CSS
-function colorTheBox(event) {
-  document.querySelector(".colorBox").style.backgroundColor =
-    event.target.value;
+function startColorSelector() {
+  console.log("Start function and get color");
 
-  let hexValue = event.target.value;
-  return hexValue;
+  let input = document.querySelector("#choose_color");
+  input.addEventListener("input", startColorSelector);
+  showColorDelegator(input);
 }
 
-//Showing hex
-function showHEX(hexValue) {
-  Number.parseInt(hexValue);
-  document.querySelector(".hex").textContent = `HEX: ${hexValue}`;
+function showColorDelegator(input) {
+  // Her er delegatoren der deler de forskellige opgaver ud
+  console.log("Starting the delegator");
+  const hex = input.value;
+  console.log(hex);
+
+  const rgb = hexToRgb(hex);
+  showRgb(rgb);
+
+  showBoxColor(hex);
+
+  showHex(hex);
+
+  const hsl = rgbToHsl(rgb);
+  showHsl(hsl);
 }
 
-//Showing rgb
-function showRGB(rgb) {
+function hexToRgb(hex) {
+  // Udregner rgb koden fra hex i tre dele
+  const r = parseInt(hex.substring(1, 3), 16);
+  const g = parseInt(hex.substring(3, 5), 16);
+  const b = parseInt(hex.substring(5, 7), 16);
+  return { r, g, b };
+}
+
+function showRgb(rgb) {
+  // Viser rgb koden i html
   document.querySelector(
-    ".rgb"
-  ).textContent = `RGB: ${rgb.r}, ${rgb.g}, ${rgb.b}`;
+    "#rgb_color"
+  ).textContent = `RGB: (${rgb.r}, ${rgb.g}, ${rgb.b})`;
 }
 
-//Showing hsl
-function showHSL(hsl) {
-  document.querySelector(".hsl").textContent = hsl;
+function showBoxColor(hex) {
+  // Skifter farve på boksen
+  document.querySelector("#color_box").style.backgroundColor = `${hex}`;
 }
 
-//Showing css
-function showCSS(css) {
-  document.querySelector(".cssBox").style.backgroundColor = css;
-  console.log(css);
-}
-//Converting hex to rgb
-function hexToRGB(hexValue) {
-  const rgb = { r: "", g: "", b: "" };
-  rgb.r = Number.parseInt(hexValue.substring(1, 3), 16);
-  rgb.g = Number.parseInt(hexValue.substring(3, 5), 16);
-  rgb.b = Number.parseInt(hexValue.substring(5, 7), 16);
-  return rgb;
+function showHex(hex) {
+  // Viser hex kode i html
+  document.querySelector("#hex_color").textContent = `HEX: ${hex}`;
 }
 
-//Converting rgb to css
-function rgbToCSS(rgb) {
-  rgb.r.toString();
-  rgb.g.toString();
-  rgb.b.toString();
-
-  let cssResult = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-  //console.log(cssResult);
-  return cssResult;
+function rgbToHex(rgb) {
+  // Udregner og forkorter tal. Nodtager rgb og leverer hex
+  const r = rgb.r.toString(16).padStart(2, "0");
+  const g = rgb.g.toString(16).padStart(2, "0");
+  const b = rgb.b.toString(16).padStart(2, "0");
+  const hex = `#${r}${g}${b}`;
+  return hex;
 }
-//Converting rbg to hsl --> code was given by teachers
-function rgbToHSL(rgb) {
-  rgb.r /= 255;
-  rgb.g /= 255;
-  rgb.b /= 255;
+
+function showHsl(hsl) {
+  // Viser HSL kode i html og forkorter decimalerne
+  document.querySelector("#hsl_color").textContent = `HSL: ${hsl.h.toFixed(
+    2
+  )}%, ${hsl.s.toFixed(2)}%, ${hsl.l.toFixed(2)}%`;
+}
+
+function rgbToHsl(rgb) {
+  // Udregner hsl kode fra rgb og leverer h, s og l til funktionen showHsl
+  let r = rgb.r;
+  let g = rgb.g;
+  let b = rgb.b;
+
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
   let h, s, l;
 
-  const min = Math.min(rgb.r, rgb.g, rgb.b);
-  const max = Math.max(rgb.r, rgb.g, rgb.b);
+  const min = Math.min(r, g, b);
+  const max = Math.max(r, g, b);
 
   if (max === min) {
     h = 0;
-  } else if (max === rgb.r) {
-    h = 60 * (0 + (rgb.g - rgb.b) / (max - min));
-  } else if (max === rgb.g) {
-    h = 60 * (2 + (rgb.b - rgb.r) / (max - min));
-  } else if (max === rgb.b) {
-    h = 60 * (4 + (rgb.r - rgb.g) / (max - min));
+  } else if (max === r) {
+    h = 60 * (0 + (g - b) / (max - min));
+  } else if (max === g) {
+    h = 60 * (2 + (b - r) / (max - min));
+  } else if (max === b) {
+    h = 60 * (4 + (r - g) / (max - min));
   }
 
   if (h < 0) {
@@ -99,12 +104,9 @@ function rgbToHSL(rgb) {
   } else {
     s = (max - l) / Math.min(l, 1 - l);
   }
-  //Multiplying s and l by 100 to get the value in percent, rather than [0,1]
+  // multiply s and l by 100 to get the value in percent, rather than [0,1]
   s *= 100;
   l *= 100;
 
-  //Console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
-  //Testing
-  let HSLResult = `HSL: ${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
-  return HSLResult;
+  return { h, s, l };
 }
