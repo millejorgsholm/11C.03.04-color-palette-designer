@@ -2,37 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="finalColorPalette.css" rel="stylesheet" />
-    <title>The final colorpalette</title>
+    <meta name="robots" content="noindex" />
+    <title>11c_03_04 Color Palette Designer</title>
+    <link rel="stylesheet" href="finalColorPalette.css" />
   </head>
   <body>
-    <body>
-        <h1>Improved Color Selector</h1>
-     
-        <p>Choose a color harmony:</p>
-        <div id="color_harmonies">
-            <label><input type="radio" name="harmony" value="analogous">Analogous</label>
-            <label><input type="radio" name="harmony" value="monochromatic">Monochromatic</label>
-            <label><input type="radio" name="harmony" value="triad">Triad</label>
-            <label><input type="radio" name="harmony" value="complementary">Complementary</label>
-            <label><input type="radio" name="harmony" value="compound">Compound</label>
-            <label><input type="radio" name="harmony" value="shades">Shades</label>
-          </div>
-          <br>
-          <p>Select the basecolor:</p>
-        <div class="color_selector">
-          <input type="color" id="choose_color" />
-          <label for="choose_color"></label>
+    <main>
+      <h1>The Color Palette Designer</h1>
+
+      <div id="harmonies">
+        <label
+          ><input
+            checked
+            type="radio"
+            name="harmony"
+            value="analogous"
+          />Analogous</label
+        >
+        <label
+          ><input
+            type="radio"
+            name="harmony"
+            value="monochromatic"
+          />Monochromatic</label
+        >
+        <label><input type="radio" name="harmony" value="triad" />Triad</label>
+        <label
+          ><input
+            type="radio"
+            name="harmony"
+            value="complementary"
+          />Complementary</label
+        >
+        <label
+          ><input type="radio" name="harmony" value="compound" />Compound</label
+        >
+        <label
+          ><input type="radio" name="harmony" value="shades" />Shades</label
+        >
+      </div>
+
+      <div id="colorinput">
+        <label>
+          Pick the basecolor:
+          <input type="color" id="colorpicker" />
+        </label>
+      </div>
+
+      <div id="colors">
+        <div id="colorinfo1">
+          <div class="colorbox"></div>
+          <div class="hex"></div>
+          <div class="rgb"></div>
+          <div class="hsl"></div>
         </div>
-        <div id="color_box"></div>
-        <div class="color_selected">
-          <p id="hex_color">HEX:</p>
-          <p id="rgb_color">RGB:</p>
-          <p id="hsl_color">HSL:</p>
+        <div id="colorinfo2">
+          <div class="colorbox"></div>
+          <div class="hex"></div>
+          <div class="rgb"></div>
+          <div class="hsl"></div>
         </div>
-    
+        <div id="colorinfo3">
+          <div class="colorbox"></div>
+          <div class="hex"></div>
+          <div class="rgb"></div>
+          <div class="hsl"></div>
+        </div>
+        <div id="colorinfo4">
+          <div class="colorbox"></div>
+          <div class="hex"></div>
+          <div class="rgb"></div>
+          <div class="hsl"></div>
+        </div>
+        <div id="colorinfo5">
+          <div class="colorbox"></div>
+          <div class="hex"></div>
+          <div class="rgb"></div>
+          <div class="hsl"></div>
+        </div>
+      </div>
+    </main>
     <script src="finalColorPalette.js"></script>
   </body>
 </html>

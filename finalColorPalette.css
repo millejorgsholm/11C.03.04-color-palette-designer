@@ -1,11 +1,52 @@
-body {
-  background: #f5f5f5;
-  font-family: "Montserrat";
+* {
+  box-sizing: border-box;
 }
 
-#color_box {
-  width: 150px;
-  height: 150px;
-  margin: 15px 0;
-  border-radius: 5px;
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#harmonies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+
+#colorinput {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#colors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.colorbox {
+  width: 200px;
+  height: 200px;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  margin-bottom: 1rem;
+}
+
+#colorinfo1 div:nth-of-type(1) {
+  border-left: 1px solid black;
+  border-radius: 10% 0 0 10%;
+}
+
+#colorinfo5 div:nth-of-type(1) {
+  border-radius: 0 10% 10% 0;
 }
